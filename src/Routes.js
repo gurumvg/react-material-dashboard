@@ -14,10 +14,16 @@ import {
   Settings as SettingsView,
   SignUp as SignUpView,
   SignIn as SignInView,
+  Services as ServicesView,
+  Partners as PartnersView,
   NotFound as NotFoundView
 } from './views';
 
-const Routes = () => {
+import { ServiceAdd as ServiceAddView } from './views/Services/components'
+import { PartnerAdd as PartnerAddView } from './views/Partners/components'
+
+const Routes = (props) => {
+  const {user} = props;
   return (
     <Switch>
       <Redirect
@@ -26,22 +32,39 @@ const Routes = () => {
         to="/dashboard"
       />
       <RouteWithLayout
+        user={user}
         component={DashboardView}
         exact
         layout={MainLayout}
         path="/dashboard"
       />
       <RouteWithLayout
-        component={UserListView}
+        user={user}
+        component={ServicesView}
         exact
         layout={MainLayout}
-        path="/users"
+        path="/services"
       />
       <RouteWithLayout
-        component={ProductListView}
+        user={user}
+        component={ServiceAddView}
         exact
         layout={MainLayout}
-        path="/products"
+        path="/addservice"
+      />
+      <RouteWithLayout
+        user={user}
+        component={PartnersView}
+        exact
+        layout={MainLayout}
+        path="/partners"
+      />
+      <RouteWithLayout
+        user={user}
+        component={PartnerAddView}
+        exact
+        layout={MainLayout}
+        path="/addpartner"
       />
       <RouteWithLayout
         component={TypographyView}

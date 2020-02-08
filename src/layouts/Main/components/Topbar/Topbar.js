@@ -7,6 +7,10 @@ import { AppBar, Toolbar, Badge, Hidden, IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
 import InputIcon from '@material-ui/icons/Input';
+import { Avatar, Typography } from '@material-ui/core';
+
+import firebase from '../../../../firebase';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,11 +25,15 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Topbar = props => {
-  const { className, onSidebarOpen, ...rest } = props;
+  const { className, onSidebarOpen, user, ...rest } = props;
 
   const classes = useStyles();
 
   const [notifications] = useState([]);
+
+  const logoutUser = () => {
+    firebase.auth().signOut();
+  };
 
   return (
     <AppBar
@@ -34,10 +42,7 @@ const Topbar = props => {
     >
       <Toolbar>
         <RouterLink to="/">
-          <img
-            alt="Logo"
-            src="/images/logos/logo--white.svg"
-          />
+          <Typography>Welcome to ...</Typography>
         </RouterLink>
         <div className={classes.flexGrow} />
         <Hidden mdDown>
@@ -53,6 +58,7 @@ const Topbar = props => {
           <IconButton
             className={classes.signOutButton}
             color="inherit"
+            onClick={logoutUser}
           >
             <InputIcon />
           </IconButton>

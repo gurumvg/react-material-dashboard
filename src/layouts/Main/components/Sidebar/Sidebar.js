@@ -5,7 +5,8 @@ import { makeStyles } from '@material-ui/styles';
 import { Divider, Drawer } from '@material-ui/core';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
-import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import DriveEtaIcon from '@material-ui/icons/DriveEta';
+import EmojiTransportationIcon from '@material-ui/icons/EmojiTransportation';
 import TextFieldsIcon from '@material-ui/icons/TextFields';
 import ImageIcon from '@material-ui/icons/Image';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
@@ -38,7 +39,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Sidebar = props => {
-  const { open, variant, onClose, className, ...rest } = props;
+  const { open, variant, onClose, className, user, ...rest } = props;
 
   const classes = useStyles();
 
@@ -49,39 +50,14 @@ const Sidebar = props => {
       icon: <DashboardIcon />
     },
     {
-      title: 'Users',
-      href: '/users',
-      icon: <PeopleIcon />
+      title: 'Services',
+      href: '/services',
+      icon: <DriveEtaIcon />
     },
     {
-      title: 'Products',
-      href: '/products',
-      icon: <ShoppingBasketIcon />
-    },
-    {
-      title: 'Authentication',
-      href: '/sign-in',
-      icon: <LockOpenIcon />
-    },
-    {
-      title: 'Typography',
-      href: '/typography',
-      icon: <TextFieldsIcon />
-    },
-    {
-      title: 'Icons',
-      href: '/icons',
-      icon: <ImageIcon />
-    },
-    {
-      title: 'Account',
-      href: '/account',
-      icon: <AccountBoxIcon />
-    },
-    {
-      title: 'Settings',
-      href: '/settings',
-      icon: <SettingsIcon />
+      title: 'Partners',
+      href: '/partners',
+      icon: <EmojiTransportationIcon />
     }
   ];
 
@@ -97,13 +73,13 @@ const Sidebar = props => {
         {...rest}
         className={clsx(classes.root, className)}
       >
-        <Profile />
+        <Profile user={user} />
         <Divider className={classes.divider} />
         <SidebarNav
           className={classes.nav}
           pages={pages}
         />
-        <UpgradePlan />
+        
       </div>
     </Drawer>
   );
