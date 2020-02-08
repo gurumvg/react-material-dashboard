@@ -6,14 +6,11 @@ import "firebase/firestore";
 // import "firebase/storage";
 // import "firebase/performance";
 
+
+// REPLCE BELOW FIREBASE CONFIGURE OF YOUR OWN
+
 firebase.initializeApp({
-    apiKey: 'AIzaSyDyIg9GDHMjEB4I8cqklw77ieHdSDNnxyg',
-    authDomain: 'svd-app-firebase.firebaseapp.com',
-    databaseURL: 'https://svd-app-firebase.firebaseio.com',
-    projectId: 'svd-app-firebase',
-    storageBucket: 'svd-app-firebase.appspot.com',
-    messagingSenderId: '699400500890',
-    appId: '1:699400500890:web:17a3fa6dad8e4ebd'
+    ...
 });
 
 export default firebase;
